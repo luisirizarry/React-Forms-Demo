@@ -3,7 +3,7 @@ import React from "react";
 const Item = ({ id, name, qty }) => {
 
   return (
-    <ul>
+    <ul id={id}>
       <li>Product Name: {name}</li>
       <li>Quantity: {qty}</li>
     </ul>

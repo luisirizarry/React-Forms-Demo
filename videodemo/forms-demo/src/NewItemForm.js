@@ -5,7 +5,9 @@ const NewItemForm = ({ addItem }) => {
     name: '',
     qty: ''
   }
+  
   const [formData, setFormData] = useState(INITIAL_STATE);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(formData => ({
@@ -13,30 +15,28 @@ const NewItemForm = ({ addItem }) => {
       [name]: value
     }))
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    addItem({ ...formData });
-    setFormData(INITIAL_STATE)
+    addItem(...formData);
+    setFormData(INITIAL_STATE);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="name">Product</label>
       <input
-        id="name"
         type="text"
         name="name"
         placeholder="Item Name"
         value={formData.name}
         onChange={handleChange}
       />
-      <label htmlFor="qty">Quantity:{formData.qty}</label>
+      <label htmlFor="qty">Quantity</label>
       <input
-        id="qty"
-        type="range"
+        type="text"
         name="qty"
-        min="1"
-        max="10"
+        placeholder="Quantity"
         value={formData.qty}
         onChange={handleChange}
       />
