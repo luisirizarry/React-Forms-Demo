@@ -3,58 +3,51 @@ import React, { useState } from "react";
 const UserForm = () => {
   const initialState = {
     username: "",
-    email: "",
-    password: ""
+    email: ""
   }
-  const [formData, setFormData] = useState(initialState)
-  const handleChange = e => {
+
+  const [formData, setFormData] = useState(initialState);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(data => ({
-      ...data,
+    setFormData( fData => ({
+      ...fData,
       [name]: value
-    }))
+    }));
+      
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password } = formData;
-    alert(`Created user, ${username} w/ email ${email} & password ${password}`)
-    setFormData(initialState)
+    const { username, email } = formData;
+    alert(`Created user, ${username} w/email ${email}`)
+    setFormData(initialState);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username</label>
-      <input
-        id="username"
-        type="text"
-        name="username"
-        placeholder="username"
-        value={formData.username}
-        onChange={handleChange}
-      />
-
+    <form>
       <label htmlFor="email">Email</label>
-      <input
-        type="email"
+      <input 
+        type="email" 
         placeholder="email"
+        name="username"
+        id="email" 
+        value={formData.email} 
+        onChange={handleChange}
+      />
+      <br/>
+      <label htmlFor="username">Username</label>
+      <input 
+        id="username" 
+        type="text" 
         name="email"
-        id="email"
-        value={formData.email}
+        placeholder="username" 
+        value={formData.username} 
         onChange={handleChange}
       />
-
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        placeholder="password"
-        name="password"
-        id="password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-
-      <button>Add me to list!</button>
+      <br/>
+      <button onClick={handleSubmit}>Add me to the list!</button>
+      
     </form>
   )
 }
